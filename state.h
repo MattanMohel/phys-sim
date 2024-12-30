@@ -10,27 +10,28 @@ namespace cds {
       State(float kv=DEFAULT_KV, float kd=DEFAULT_KD);
       ~State();
 
-    private:
+      void init(int parameters, int constraints);
+
       // configuration parameters
-      float* m_q;
-      float* m_q_dot;
+      float* m_q     = nullptr;
+      float* m_q_dot = nullptr;
 
       // constraint jacobian
-      float* m_j;
-      float* m_j_dot;
+      float* m_j     = nullptr;
+      float* m_j_dot = nullptr;
 
       // constraint value
-      float* m_c;
-      float* m_c_dot;
+      float* m_c     = nullptr;
+      float* m_c_dot = nullptr;
 
       // applied force 
-      float* f_a;
-
-      // constrained force
-      float* f_c; 
+      float* m_f = nullptr;
 
       // distance and velocity damping values;
       float m_kd, m_kv;
+
+    private:
+      bool m_init = false;
   };
 }
 

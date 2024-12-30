@@ -2,23 +2,29 @@
 #define CONSTRAINT_H
 
 #include "state.h"
+#include "util.h"
+
+#define MAX_IN  3
+#define MAX_OUT 3
 
 namespace cds {
   class Constraint {
     public:
-      Constraint();
-
-      virtual void compute(State* state);
+      Constraint(int in, int out);
+      virtual void compute(Output& out, const State& state);
+      void set_id(int id);
+      int id();
+      int output_count();
+      int input_count();
 
     private:
       // amount of parameter inputs
-      int m_inp_len;
+      int m_in;
 
       // amount of constraint outputs
-      int m_out_len;
+      int m_out;
 
-      // pointer to start of constraint data block 
-      float* m_data_ptr;
+      int m_id = -1;
   };
 }
 
