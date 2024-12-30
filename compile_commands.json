@@ -1,0 +1,4 @@
+CompileFlags:
+  Add: [-xc++, -Wall, -I/usr/include/eigen3]
+  Remove: [-W*]
+  Compiler: gcc
